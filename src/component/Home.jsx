@@ -1,16 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 export default function Home(props) {
 
   const [searchVal, setSearchVal] = useState()
+  const [resData, setResData] = useState();
+
+  const navigate = useNavigate()
 
   const handleClick = (e) => {
    setSearchVal(e.target.previousSibling.firstChild.value)
   }
 
+  useEffect(() => {
+    const url = `https://api.openweathermap.org/data/2.5/forecast?APPID=2cc3a1b1ab65f4ad2c40443fde9cc68c&q=${searchVal}&units=metric`;
+    axios.get(url).then((data) => setResData(data));
+  }, [searchVal]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.getData(searchVal)
+    if(resData) {
+      props.getData(resData)
+      navigate('/result')
+    } 
   }
 
   return (

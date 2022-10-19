@@ -10,7 +10,7 @@ export default function Result(props) {
 
   let initialValue;
 
-  props.resData.data.list.map((x, i) => {
+  props.resData.data.list.forEach((x, i) => {
     if(i === 0) {nextFiveDays.push(x)}
     else if (i !== 0) {
       if (initialValue.dt_txt.slice(0, 11) !== x.dt_txt.slice(0, 11)) {
