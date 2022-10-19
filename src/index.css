@@ -183,7 +183,7 @@ code {
 .wrapper {
   width: 85%;
   margin: 0 auto;
-  transform: translateY(30%);
+  transform: translateY(15%);
 }
 
 .result-day {
@@ -273,3 +273,4 @@ code {
 
 .weather-forecast-value { font-size: 20px; }
 /* result page ends here */
+

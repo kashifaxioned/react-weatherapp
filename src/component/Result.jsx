@@ -65,9 +65,9 @@ export default function Result(props) {
           <div className="weather-forecast">
           <h2 className="weather-forecast-title">Next 5 Days</h2>
             <ul className="weather-forecast-list">
-              {nextFiveDays.map((x) => (
-                <Forecast data={x} />
-              ))}
+              {nextFiveDays.map((x, i) => (
+                <Forecast data={x} key={i} />
+                ))}
             </ul>
           </div>
         </div>
