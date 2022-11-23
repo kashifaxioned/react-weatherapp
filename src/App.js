@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import Result from "./component/Result";
+import Home from "./component/Home";
 
-function App() {
+export default function App() {
+  const [data, setData] = useState();
+
+  const handleData = (response) => {
+    setData(response);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home getData={handleData} />} />
+      <Route path="/result" element={<Result resData={data} />} />
+    </Routes>
   );
 }
-
-export default App;

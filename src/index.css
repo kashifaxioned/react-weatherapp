@@ -1,13 +1,276 @@
-body {
+@charset "utf-8";
+/* ==========================================================================
+   1. CSS Reset Code
+   ========================================================================== */
+
+/* 1.1. Eric Meyers Reset
+   http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+   ========================================================================== */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img,
+ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure,
+figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* Force scrollbar */
+html { overflow-y: scroll; }
+
+/* Align radios and text inputs with their label */
+
+input[type='radio'] { vertical-align: text-bottom; }
+
+/* Hand cursor on clickable input elements */
+label,
+input[type='button'],
+input[type='submit'],
+button {
+  cursor: pointer;
+}
+
+strong {
+  font-weight: bold;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+em { font-style: italic; }
+
+img {
+  width: 100%;
+  border: 0;
+  vertical-align: middle;
+}
+
+sub,
+sup {
+  vertical-align: baseline;
+  position: relative;
+  font-size: 55%;
+  line-height: 0;
+}
+
+sup { top: -.7em; }
+sub { bottom: -.25em; }
+
+/* 1.2. Clear Fix
+   ========================== */
+
+.cf:before,
+.cf:after {
+  display: table;
+  content: " ";
+}
+
+.cf:after { clear: both; }
+.cf { *zoom: 1; }
+
+/*for all*/
+body {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+a { 
+  display: inline-block;
+  text-decoration: none; 
+}
+
+li {
+  display: inline-block;
+  list-style-type: none;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.home {
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  background-image: url('../public/bg.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.home form {
+  height: inherit;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}
+
+.inp-field {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #5C2E7E;
+  background: none;
+  outline: none;
+  font-size: 1.6rem;
+  font-weight: 500; 
+}
+
+.inp-error {
+  padding-top: 10px;
+  display: none;
+  color: red;
+  font-size: 18px;
+}
+
+.inp-error::first-letter { text-transform: capitalize; }
+
+.search-btn {
+  border: 1px solid #5C2E7E;
+  border-radius: 50%;
+  background-color: #5C2E7E;
+  color: #FCF8E8;
+  cursor: pointer;
+  text-indent: -999999px; 
+}
+
+.search-btn:hover {
+  background: transparent;
+  color: #5C2E7E;
+}
+
+.search-btn::before {
+  padding: 17px 14px;
+  content: "\f002";
+  color: inherit;
+  font-family: "FontAwesome";
+  font-size: 1.3rem;
+  font-weight: 500;
+  float: right;
+  text-indent: 0; 
+}
+
+
+/* result page starts here */
+
+.result {
+  min-height: 100vh;
+  /* background-image: url('../public/bg.jpg'); */
+  background-position: center;
+  background-size: cover;
+  color: #5C2E7E;
+}
+
+.wrapper {
+  width: 85%;
+  margin: 0 auto;
+  transform: translateY(15%);
+}
+
+.result-day {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.result-city {
+  font-size: 32px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.weather-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.weather-info-today {
+  flex-basis: 40%;
+}
+
+.result-img-figure img {
+  width: 150px;
+}
+
+.result-img-title {
+  font-size: 32px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.result-img-info {
+  padding: 5px 0 10px;
+  display: block;
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+.result-condition {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-condition-item {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.result-condition-item:not(:last-child) {
+  border-bottom: 1px solid #fff;
+}
+
+.result-condition-item-title { font-size: 20px; }
+
+.result-condition-item-value { font-size: 18px; }
+
+.weather-forecast { flex-basis: 40%; }
+
+.weather-forecast-list {
+  padding: 40px;
+  border-radius: 20px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  background: #5C2E7E;
+  color: #fff;
+}
+
+.weather-forecast-day:not(:last-child) { border-bottom: 1px solid #fff; }
+
+.weather-forecast-title {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.weather-forecast-day {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.weather-forecast-day { font-size: 18px; }
+
+.weather-forecast-value { font-size: 20px; }
+/* result page ends here */
+
